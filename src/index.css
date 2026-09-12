@@ -1,0 +1,33 @@
+:root {
+  font-family: 'Trebuchet MS', 'Arial Narrow', sans-serif;
+
+  /* IMPORTANT */
+  color: var(--ink);
+  background: var(--bg);
+
+  --bg: #f7f8f5;
+  --panel: rgba(255,255,255,.7);
+  --ink: #17191d;
+  --muted: #687078;
+  --line: #cdd2d3;
+  --blue: #1687d5;
+  --black: #0d1013;
+  --mono: 'Courier New', monospace;
+}
+
+:root[data-theme='dark'] {
+  --bg: #111519;
+  --panel: rgba(25,31,35,.8);
+  --ink: #f2f5f4;
+  --muted: #9ca8ad;
+  --line: #344047;
+  --black: #0d1013;
+}
+:root[data-theme='dark'] .skill-icon img {
+  filter: invert(1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background-color: var(--bg); background-image: linear-gradient(rgba(110,125,130,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(110,125,130,.08) 1px, transparent 1px); background-size: 44px 44px; }
+button, a { font: inherit; }
+a { color: inherit; }
