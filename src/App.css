@@ -69,7 +69,31 @@ h1 { margin-bottom: 15px; font: 900 clamp(72px, 12vw, 158px)/.78 'Arial Narrow',
 @media (max-width: 600px) { .intro-overlay { padding: 14px; }.intro-shell { height: calc(100vh - 28px); }.intro-console { top: 23px; left: 23px; }.intro-index, .intro-skip { right: 23px; }.intro-index { top: 23px; }.intro-skip { bottom: 23px; }.intro-name { font-size: clamp(52px, 18vw, 100px); }.intro-role { max-width: 280px; margin-top: 22px; font-size: 20px; line-height: 1.1; }.intro-status { max-width: 230px; margin-top: 22px; line-height: 1.5; }.intro-corner { width: 20px; height: 20px; } }
 @media (prefers-reduced-motion: reduce) { .intro-overlay, .intro-shell, .intro-console span, .intro-name, .intro-role, .intro-status { animation: none; } }
 @media (max-width: 800px) { .navbar { height: 64px; padding: 0 20px; gap: 15px; }.menu-toggle { display: block; margin-left: auto; }.navbar nav { position: absolute; top: 63px; left: 0; right: 0; display: none; flex-direction: column; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 20px; }.navbar nav.open { display: flex; }.navbar nav a { padding: 13px; }.theme-toggle { order: 4; }.section-pad { padding: 75px 20px; }.hero-section { display: flex; flex-direction: column; align-items: stretch; padding-top: 65px; gap: 55px; }.hero-side { max-width: none; }.stats { grid-template-columns: 1fr; padding-top: 0; }.section-heading { display: block; }.section-heading .eyebrow { display: block; margin-bottom: 15px; }.explorer, .skills-layout { grid-template-columns: 1fr; }.explorer aside { border-right: 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; }.window-title { grid-column: 1 / -1; }.file { padding: 13px; }.file-content { padding: 30px 22px; }.timeline article { grid-template-columns: 1fr; gap: 10px; padding-left: 26px; }.timeline h3 { margin-top: 0; }.project-grid { gap: 45px; }.project-grid .project-card:nth-child(odd), .project-grid .project-card:nth-child(even) { align-self: stretch; width: 100%; max-width: none; }.project-card p { min-height: 0; }.service-grid { grid-template-columns: 1fr; }.project-empty { padding: 32px 24px; }.project-empty h3 { font-size: 30px; }.skills-layout aside { display: flex; overflow-x: auto; }.skill-tab { white-space: nowrap; width: auto; flex: 0 0 auto; border-right: 1px solid var(--line); border-bottom: 0; }.skill-cards { padding: 20px; }.skill-card { flex: 1 1 120px; }.worked { grid-template-columns: 1fr; gap: 15px; }.contact { margin-top: 20px; }.contact h2 { letter-spacing: -2px; }.social-links a { font-size: 9px; }footer { grid-template-columns: 1fr 1fr; padding: 60px 20px 25px; gap: 35px 20px; }footer > div:first-child { grid-column: 1 / -1; }.footer-bottom { font-size: 9px; } }
-.intro-overlay { width: 100vw; height: 100vh; padding: 0; background-image: linear-gradient(rgba(110,125,130,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(110,125,130,.045) 1px, transparent 1px); background-size: 48px 48px; z-index: 99999; }.intro-shell { width: 100%; height: 100%; border: 0; background: transparent; animation: none; }.intro-center { display: flex; flex-direction: column; align-items: center; width: min(480px, calc(100% - 40px)); text-align: center; }.intro-name { font-size: clamp(72px, 12vw, 156px); letter-spacing: .12em; text-indent: .12em; text-shadow: 2px 0 0 color-mix(in srgb, var(--blue) 24%, transparent); animation: introNameIn .7s cubic-bezier(.22, .8, .24, 1) .2s both; }.intro-welcome { margin-top: 28px; color: var(--muted); font: 700 10px var(--mono); letter-spacing: 2.6px; opacity: 0; animation: introWelcomeIn .5s ease .4s forwards; }.intro-loader { display: block; width: min(320px, 100%); height: 1px; margin-top: 29px; overflow: hidden; background: color-mix(in srgb, var(--line) 70%, transparent); opacity: 0; animation: introElementIn .35s ease .6s forwards; }.intro-loader span { display: block; width: 0; height: 100%; background: var(--blue); transform-origin: left center; animation: introLoad 2.4s linear .6s forwards; }.intro-skip { right: 32px; bottom: 28px; opacity: .65; transition: opacity .2s, color .2s; }.intro-skip:hover { opacity: 1; }.intro-overlay.is-exiting { animation: introExit .6s cubic-bezier(.6, 0, .8, .2) forwards; }
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+  padding: 0;
+  overflow: hidden;
+
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(110,125,130,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110,125,130,.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+
+  z-index: 99999;
+}.intro-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border: 0;
+  background: transparent;
+  animation: none;
+}.intro-center { display: flex; flex-direction: column; align-items: center; width: min(480px, calc(100% - 40px)); text-align: center; }.intro-name { font-size: clamp(72px, 12vw, 156px); letter-spacing: .12em; text-indent: .12em; text-shadow: 2px 0 0 color-mix(in srgb, var(--blue) 24%, transparent); animation: introNameIn .7s cubic-bezier(.22, .8, .24, 1) .2s both; }.intro-welcome { margin-top: 28px; color: var(--muted); font: 700 10px var(--mono); letter-spacing: 2.6px; opacity: 0; animation: introWelcomeIn .5s ease .4s forwards; }.intro-loader { display: block; width: min(320px, 100%); height: 1px; margin-top: 29px; overflow: hidden; background: color-mix(in srgb, var(--line) 70%, transparent); opacity: 0; animation: introElementIn .35s ease .6s forwards; }.intro-loader span { display: block; width: 0; height: 100%; background: var(--blue); transform-origin: left center; animation: introLoad 2.4s linear .6s forwards; }.intro-skip { right: 32px; bottom: 28px; opacity: .65; transition: opacity .2s, color .2s; }.intro-skip:hover { opacity: 1; }.intro-overlay.is-exiting { animation: introExit .6s cubic-bezier(.6, 0, .8, .2) forwards; }
 @keyframes introElementIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } } @keyframes introWelcomeIn { from { opacity: 0; transform: translateY(10px); letter-spacing: 3.8px; } to { opacity: 1; transform: none; letter-spacing: 2.6px; } } @keyframes introLoad { from { width: 0; } to { width: 100%; } }
 @media (max-width: 600px) {
   .intro-name {
